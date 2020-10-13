@@ -1,14 +1,5 @@
-require "bike"
-RSpec.describe Bike do
-  subject = Bike.new
-  describe "#working" do
-    #it "responds true to working?" do
-    #  expect(subject.working?).to eq true
-  #  end
+require "./lib/bike.rb"
 
-    it "responds to working?" do
-      expect(subject.respond_to?(working?)).to eq true
-    end
+  describe Bike do
+  it {is_expected.to respond_to :working?}
   end
-
-end
