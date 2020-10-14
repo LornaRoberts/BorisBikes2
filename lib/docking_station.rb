@@ -9,12 +9,16 @@ class DockingStation
   end
 
   def release_bike
-    # if @bikes_docked > 0
-    #   @bikes_docked -= 1
-      bike = Bike.new
-    # else
-    #   "There are no bikes"
-    # end
+    fail "Error: No bike" unless @has_bike
+    @has_bike
+
+
+    # # if @bikes_docked > 0
+    # #   @bikes_docked -= 1
+    #   bike = Bike.new
+    # # else
+    # #   "There are no bikes"
+    # # end
   end
 
   def dock(bike)
