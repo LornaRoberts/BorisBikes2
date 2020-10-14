@@ -1,17 +1,18 @@
 require './lib/bike.rb'
 
 class DockingStation
-  attr_reader :has_bike
+  attr_reader :bike_collection
 
   def initialize
-    # @bikes_docked = 1
-    # @capacity = 4
+    @bike_collection = []
+    #bikes_docked
+    @capacity = 20
   end
 
   def release_bike
-    fail "Error: No bike" unless @has_bike
-    @has_bike
-
+    fail "Error: No bike" if @bike_collection == []
+    # TODO: try with unless to see if it's empty
+    @bike_collection.pop
 
     # # if @bikes_docked > 0
     # #   @bikes_docked -= 1
@@ -22,8 +23,8 @@ class DockingStation
   end
 
   def dock(bike)
-    fail "Error: Bike already in place" if @has_bike
-    @has_bike = bike
+    fail "Error: Bike already in place" if @bike_collection.length >= @capacity
+    @bike_collection.push(bike)
     # if @bikes_docked < @capacity
     #   @bikes_docked += 1
       "Bike docked!"

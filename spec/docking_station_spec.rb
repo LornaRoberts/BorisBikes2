@@ -15,8 +15,6 @@ RSpec.describe DockingStation do
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
     end
-
-
   end
   # describe "#working?" do
   #   it "releases bike and bike is working" do
@@ -32,20 +30,25 @@ RSpec.describe DockingStation do
       bike = Bike.new
       expect(subject.dock(bike)).to eq "Bike docked!"
     end
-    # if dockingstation holds a  @bike already then throw error message saying it's full
-    # otherwise allow the bike to be docked
     it "throws an error when there is a bike" do
-      bike = Bike.new
-      subject.dock(bike)
-      expect{subject.dock(bike)}.to raise_error(RuntimeError, "Error: Bike already in place")
+      20.times do
+        subject.dock(Bike.new)
+      end
+      expect{subject.dock(Bike.new)}.to raise_error(RuntimeError, "Error: Bike already in place")
     end
-
   end
-  describe "#has_bike" do
-    it "returns bike that is docked" do
-      bike = Bike.new
-      subject.dock(bike)
-      expect(subject.has_bike).to eq bike
+  describe "#bike_collection" do
+    it "bike_collection attribute" do
+      is_expected.to respond_to :bike_collection
+    end
+    it "bike_collection has no bikes" do
+      expect(subject.bike_collection).to eq []
+    end
+    it "bike_collection 4 bikes" do
+      4.times do
+        subject.dock(Bike.new)
+      end
+      expect(subject.bike_collection.length).to eq 4
     end
   end
 end

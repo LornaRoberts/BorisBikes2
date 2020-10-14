@@ -25,3 +25,11 @@ I'd like docking stations not to release bikes when there are none available.
 USER
 
 DOCKING STATION > release bike only if bike
+
+
+
+As a system maintainer,
+So that I can plan the distribution of bikes,
+I want a docking station to have a default capacity of 20 bikes.
+
+DOCKING STATION > attribute has bikes 20 bikes
