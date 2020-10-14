@@ -28,12 +28,18 @@ RSpec.describe DockingStation do
     it "docking station docks bike" do
       is_expected.to respond_to(:dock).with(1).argument
     end
-  end
-  describe "#dock" do
     it "checks if docking was successful (feature test)" do
       bike = Bike.new
       expect(subject.dock(bike)).to eq "Bike docked!"
     end
+    # if dockingstation holds a  @bike already then throw error message saying it's full
+    # otherwise allow the bike to be docked
+    it "throws an error when there is a bike" do
+      bike = Bike.new
+      subject.dock(bike)
+      expect{subject.dock(bike)}.to raise_error(RuntimeError, "Error: Bike already in place")
+    end
+
   end
   describe "#has_bike" do
     it "returns bike that is docked" do

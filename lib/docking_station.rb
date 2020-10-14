@@ -22,6 +22,7 @@ class DockingStation
   end
 
   def dock(bike)
+    fail "Error: Bike already in place" if @has_bike
     @has_bike = bike
     # if @bikes_docked < @capacity
     #   @bikes_docked += 1
@@ -29,5 +30,7 @@ class DockingStation
     # else
     #   "Find another docking station!"
     # end
+    # if dockingstation holds a  @bike already then throw error message saying it's full
+    # otherwise allow the bike to be docked
   end
 end
